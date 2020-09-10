@@ -1,0 +1,66 @@
+﻿@model KlopZavod.Models.PKvitanciya
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>PKvitanciya</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomerPK)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomerPK)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomerNakl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomerNakl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FizVes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FizVes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Zasor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Zasor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Vlagn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Vlagn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Khojagi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Khojagi.KhojagiID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Partiya)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Partiya.PartiyaID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PKvitanciyaID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

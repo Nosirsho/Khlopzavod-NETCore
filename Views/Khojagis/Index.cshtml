@@ -1,0 +1,59 @@
+﻿@model IEnumerable<KlopZavod.Models.Khojagi>
+
+@{
+    ViewData["Title"] = "Список";
+}
+
+<h1>Список дехканских хозяйств</h1>
+
+<p>
+    <a asp-action="Create">Создать новый</a>
+</p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+    <div class="col-lg-4 border border-dark rounded-lg mx-3">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+        <h2>Heading</h2>
+        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+
+
+
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                Наименование: @Html.DisplayFor(modelItem => item.Name)
+            </li>
+            <li class="list-group-item">
+                Директор: @Html.DisplayFor(modelItem => item.Director)
+            </li>
+            <li class="list-group-item"> 
+                ИНН: @Html.DisplayFor(modelItem => item.RMA)
+            </li>
+            <li class="list-group-item">
+                Телефон: @Html.DisplayFor(modelItem => item.Phone)
+            </li>
+            <li class="list-group-item">
+                Гектар(га): @Html.DisplayFor(modelItem => item.Ga)
+            </li>
+            <li class="list-group-item">
+                Ассоциация: @Html.DisplayFor(modelItem => item.Assoc.Name)
+            </li>
+            <li class="list-group-item">
+                Район: @Html.DisplayFor(modelItem => item.Rayon.Name)
+            </li>
+            <li>
+                <a asp-action="Edit" asp-route-id="@item.KhojagiID">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.KhojagiID">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.KhojagiID">Удалить</a>
+            </li>
+        </ul>
+
+
+
+
+            
+
+    </div><!-- /.col-lg-4 -->
+}
+</div>

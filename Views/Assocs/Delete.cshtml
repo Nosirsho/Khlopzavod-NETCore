@@ -1,0 +1,39 @@
+﻿@model KlopZavod.Models.Assoc
+
+@{
+    ViewData["Title"] = "Удаление";
+}
+
+<h1>Удаление</h1>
+
+<h3>Вы уверены, что хотите удалить запись?</h3>
+<div>
+    <h4>Ассоциация</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Наименование
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Наименование(сокр.)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SocrName)
+        </dd>
+        <dt class = "col-sm-2">
+            Джамоат
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Jamoat)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="AssocID" />
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">Обратно к списку</a>
+    </form>
+</div>

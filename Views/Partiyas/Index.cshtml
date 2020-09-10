@@ -1,0 +1,65 @@
+﻿@model IEnumerable<KlopZavod.Models.Partiya>
+
+@{
+    ViewData["Title"] = "Список";
+}
+
+<h1>Список партий</h1>
+
+<p>
+    <a asp-action="Create">Создать новый</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                №
+            </th>
+            <th>
+                Вид
+            </th>
+            <th>
+                Сорт
+            </th>
+            <th>
+                Вид сбора
+            </th>
+            <th>
+                Бунт
+            </th>
+            <th>
+                Разновидность
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomerPart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sort)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sbor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bunt.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semena.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PartiyaID">Изменить</a> |
+                <a asp-action="Details" asp-route-id="@item.PartiyaID">Подробнее</a> |
+                <a asp-action="Delete" asp-route-id="@item.PartiyaID">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

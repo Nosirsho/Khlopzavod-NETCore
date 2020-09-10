@@ -1,0 +1,56 @@
+﻿@model KlopZavod.Models.Partiya
+
+@{
+    ViewData["Title"] = "Создать";
+}
+
+<h1>Создание</h1>
+
+<h4>Партия</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomerPart" class="control-label">№</label>
+                <input asp-for="NomerPart" class="form-control" />
+                <span asp-validation-for="NomerPart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuntID" class="control-label">Бунт</label>
+                <select asp-for="BuntID" class ="form-control" asp-items="ViewBag.BuntID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SemenaID" class="control-label">Разновидность</label>
+                <select asp-for="SemenaID" class ="form-control" asp-items="ViewBag.SemenaID">Разновидность</select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vid" class="control-label">Вид</label>
+                <select asp-for="Vid" class="form-control" asp-items="Html.GetEnumSelectList<Vid>()">Вид</select>
+                <span asp-validation-for="Vid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sort" class="control-label">Сорт</label>
+                <input asp-for="Sort" class="form-control" />
+                <span asp-validation-for="Sort" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sbor" class="control-label">Вид сбора</label>
+                <select asp-for="Sbor" class="form-control" asp-items="Html.GetEnumSelectList<Sbor>()"></select>
+                <span asp-validation-for="Sbor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Добавить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
