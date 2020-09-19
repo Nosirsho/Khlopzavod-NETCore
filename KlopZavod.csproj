@@ -5,6 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200918060351_changePKvitanciyaModel.cs" />
+    <Compile Remove="Migrations\20200918060351_changePKvitanciyaModel.Designer.cs" />
+    <Compile Remove="Migrations\20200918085725_changePKvitanciyaModel.cs" />
+    <Compile Remove="Migrations\20200918085725_changePKvitanciyaModel.Designer.cs" />
+    <Compile Remove="Migrations\20200918090105_creater.cs" />
+    <Compile Remove="Migrations\20200918090105_creater.Designer.cs" />
+    <Compile Remove="Migrations\ZavodContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.7" />
@@ -14,6 +24,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 

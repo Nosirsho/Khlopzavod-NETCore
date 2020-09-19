@@ -37,9 +37,9 @@
                 @Html.DisplayFor(modelItem => item.Jamoat)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.AssocID">Изменить</a> |
-                <a asp-action="Details" asp-route-id="@item.AssocID">Подробнее</a> |
-                <a asp-action="Delete" asp-route-id="@item.AssocID">Удалить</a>
+                <a asp-action="Edit" asp-route-id="@item.AssocID"><img src="~/img/edit.png" width="16" height="16"></a> |
+                <a asp-action="Details" asp-route-id="@item.AssocID"><img src="~/img/detail.png" width="16" height="16"></a> |
+                <a asp-action="Delete" asp-route-id="@item.AssocID"><img src="~/img/delete.png" width="16" height="16"></a>
             </td>
         </tr>
 }

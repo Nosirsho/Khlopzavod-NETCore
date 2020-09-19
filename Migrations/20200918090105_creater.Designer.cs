@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KlopZavod.Migrations
 {
     [DbContext(typeof(ZavodContext))]
-    [Migration("20200909130005_PriemPunkt")]
-    partial class PriemPunkt
+    [Migration("20200918090105_creater")]
+    partial class creater
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -119,11 +119,11 @@ namespace KlopZavod.Migrations
                     b.Property<int>("PartiyaID")
                         .HasColumnType("int");
 
-                    b.Property<float>("Vlagn")
-                        .HasColumnType("real");
+                    b.Property<double>("Vlagn")
+                        .HasColumnType("float");
 
-                    b.Property<float>("Zasor")
-                        .HasColumnType("real");
+                    b.Property<double>("Zasor")
+                        .HasColumnType("float");
 
                     b.HasKey("PKvitanciyaID");
 

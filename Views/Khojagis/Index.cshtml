@@ -43,9 +43,9 @@
                 Район: @Html.DisplayFor(modelItem => item.Rayon.Name)
             </li>
             <li>
-                <a asp-action="Edit" asp-route-id="@item.KhojagiID">Изменить</a> |
-                <a asp-action="Details" asp-route-id="@item.KhojagiID">Подробнее</a> |
-                <a asp-action="Delete" asp-route-id="@item.KhojagiID">Удалить</a>
+                <a asp-action="Edit" asp-route-id="@item.KhojagiID"><img src="~/img/edit.png" width="16" height="16"></a> |
+                <a asp-action="Details" asp-route-id="@item.KhojagiID"><img src="~/img/detail.png" width="16" height="16"></a> |
+                <a asp-action="Delete" asp-route-id="@item.KhojagiID"><img src="~/img/delete.png" width="16" height="16"></a>
             </li>
         </ul>
 

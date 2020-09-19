@@ -12,11 +12,22 @@ namespace KlopZavod.Models {
         public int KhojagiID { get; set; }
         public int PartiyaID { get; set; }
         public int FizVes { get; set; }
-        public float Zasor { get; set; }
-        public float Vlagn { get; set; }
+        public double Zasor { get; set; } = 2;
+        public double Vlagn { get; set; } = 9;
 
 
         public Khojagi Khojagi { get; set; }
         public Partiya Partiya { get; set; }
+
+        public double getRaschVes() {         // Расчетный вес
+            double raschVes = (100 - Zasor) / 98 * FizVes;
+            return raschVes;
+        }
+
+        public int getKondMass()           // Кондиционная масса
+        {
+            int kondMass = (int)(109 / (100 + Vlagn) * getRaschVes());
+            return kondMass;
+        }
     }
 }

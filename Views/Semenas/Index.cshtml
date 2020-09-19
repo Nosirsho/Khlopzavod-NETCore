@@ -25,9 +25,9 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.SemenaID">Изменить</a> |
-                <a asp-action="Details" asp-route-id="@item.SemenaID">Подробнее</a> |
-                <a asp-action="Delete" asp-route-id="@item.SemenaID">Удалить</a>
+                <a asp-action="Edit" asp-route-id="@item.SemenaID"><img src="~/img/edit.png" width="16" height="16"></a> |
+                <a asp-action="Details" asp-route-id="@item.SemenaID"><img src="~/img/detail.png" width="16" height="16"></a> |
+                <a asp-action="Delete" asp-route-id="@item.SemenaID"><img src="~/img/delete.png" width="16" height="16"></a>
             </td>
         </tr>
 }

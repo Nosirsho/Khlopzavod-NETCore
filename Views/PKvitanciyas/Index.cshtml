@@ -13,28 +13,34 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NomerPK)
+                № ПК
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Data)
+                Дата
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NomerNakl)
+                Дехканское Хозяйство
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FizVes)
+                № Накл.
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Zasor)
+                № Партии
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Vlagn)
+                Физ.вес
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Khojagi)
+                Засор
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Partiya)
+                Расч.вес
+            </th>
+            <th>
+                Влажн
+            </th>
+            <th>
+                Конд.Масс
             </th>
             <th></th>
         </tr>
@@ -46,10 +52,19 @@
                 @Html.DisplayFor(modelItem => item.NomerPK)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Data)
+                @{
+                    string dateValue = item.Data.ToString("dd.MM.yyy");
+                }
+                @Html.DisplayFor(modelItem => dateValue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Khojagi.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NomerNakl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Partiya.PartiyaID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FizVes)
@@ -58,18 +73,25 @@
                 @Html.DisplayFor(modelItem => item.Zasor)
             </td>
             <td>
+                @{
+                    double rasVes = Math.Round(item.getRaschVes(), 2);
+                }
+                @Html.DisplayFor(modelItem => rasVes)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Vlagn)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Khojagi.KhojagiID)
+                @{
+                    int kondMass = item.getKondMass();
+                }
+                @Html.DisplayFor(modelItem => kondMass)
             </td>
+
             <td>
-                @Html.DisplayFor(modelItem => item.Partiya.PartiyaID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PKvitanciyaID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PKvitanciyaID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PKvitanciyaID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.PKvitanciyaID"><img src="~/img/edit.png" width="16" height="16"></a> |
+                <a asp-action="Details" asp-route-id="@item.PKvitanciyaID"><img src="~/img/detail.png" width="16" height="16"></a> |
+                <a asp-action="Delete" asp-route-id="@item.PKvitanciyaID"><img src="~/img/delete.png" width="16" height="16"></a>
             </td>
         </tr>
 }
