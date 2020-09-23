@@ -7,16 +7,22 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KlopZavod.Data;
 using KlopZavod.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.Globalization;
+using System.IO;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace KlopZavod.Controllers
 {
     public class KhojagisController : Controller
     {
         private readonly ZavodContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public KhojagisController(ZavodContext context)
+        public KhojagisController(ZavodContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: Khojagis
@@ -59,11 +65,22 @@ namespace KlopZavod.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("KhojagiID,Name,Director,RMA,Phone,Ga,AssocID,RayonID")] Khojagi khojagi)
+        public async Task<IActionResult> Create([Bind("KhojagiID,Name,Director,RMA,Phone,Ga,AssocID,RayonID,ImageFile")] Khojagi khojagi)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(khojagi);
+                //Сохранение изобрадение в папку wwwroot/img/avatImg
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(khojagi.ImageFile.FileName);
+                string extension = Path.GetExtension(khojagi.ImageFile.FileName);
+                khojagi.ImageName=fileName = fileName + DateTime.Now.ToString("yymmssfff")+extension;
+                string path = Path.Combine(wwwRootPath + "/img/avatImg/", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create)) {
+                    await khojagi.ImageFile.CopyToAsync(fileStream);
+                }
+
+                // Запись в БД
+                    _context.Add(khojagi);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -95,7 +112,7 @@ namespace KlopZavod.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("KhojagiID,Name,Director,RMA,Phone,Ga,AssocID,RayonID")] Khojagi khojagi)
+        public async Task<IActionResult> Edit(int id, [Bind("KhojagiID,Name,Director,RMA,Phone,Ga,AssocID,RayonID,ImageFile")] Khojagi khojagi)
         {
             if (id != khojagi.KhojagiID)
             {
@@ -106,6 +123,20 @@ namespace KlopZavod.Controllers
             {
                 try
                 {
+                    
+                                      
+
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Path.GetFileNameWithoutExtension(khojagi.ImageFile.FileName); // Возвращает имя файла без расширения пути к файлу,
+                    string extension = Path.GetExtension(khojagi.ImageFile.FileName); // Возвращает расширение (включая точку ".") Указанной строки пути.
+                    khojagi.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string path = Path.Combine(wwwRootPath + "/img/avatImg/", fileName);
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await khojagi.ImageFile.CopyToAsync(fileStream);
+                    }
+
+
                     _context.Update(khojagi);
                     await _context.SaveChangesAsync();
                 }
@@ -153,6 +184,13 @@ namespace KlopZavod.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var khojagi = await _context.Khojagi.FindAsync(id);
+
+            //Удалить изображение из wwwroot/img/avatImg
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "img/avatImg", khojagi.ImageName);
+
+            if (System.IO.File.Exists(imagePath))
+                System.IO.File.Delete(imagePath);
+            //Удалить запись
             _context.Khojagi.Remove(khojagi);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace KlopZavod.Migrations
 {
-    public partial class changePKvitanciyaModel : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,7 +73,8 @@ namespace KlopZavod.Migrations
                     Phone = table.Column<int>(nullable: false),
                     Ga = table.Column<int>(nullable: false),
                     AssocID = table.Column<int>(nullable: true),
-                    RayonID = table.Column<int>(nullable: true)
+                    RayonID = table.Column<int>(nullable: true),
+                    ImageName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

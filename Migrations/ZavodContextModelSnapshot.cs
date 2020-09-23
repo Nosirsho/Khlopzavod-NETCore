@@ -71,6 +71,9 @@ namespace KlopZavod.Migrations
                     b.Property<int>("Ga")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 

@@ -11,48 +11,54 @@
     <h4>Дехканское хозяйство</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Наименование
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Директор
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Director)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             ИНН
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.RMA)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Телефон
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Phone)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Гектар(га)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Ga)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             Ассоциация
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Assoc.Name)
-        </dd class>
-        <dt class = "col-sm-2">
+        </dd>
+        <dt class="col-sm-2">
             Район
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Rayon.Name)
-        </dd class>
+        </dd>
+        <dt class="col-sm-2">
+            Изображение
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@("~/img/avatImg/"+Model.ImageName)" asp-append-version="true" width="260" height="260" />
+        </dd>
     </dl>
     
     <form asp-action="Delete">

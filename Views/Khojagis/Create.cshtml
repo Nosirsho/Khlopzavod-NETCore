@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label">Наименование</label>
@@ -33,17 +33,22 @@
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="ImageFile" class="control-label">Изображение</label>
+                <input asp-for="ImageFile" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Ga" class="control-label">Гектар(га)</label>
                 <input asp-for="Ga" class="form-control" />
                 <span asp-validation-for="Ga" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AssocID" class="control-label">Ассоциация</label>
-                <select asp-for="AssocID" class ="form-control" asp-items="ViewBag.AssocID"></select>
+                <select asp-for="AssocID" class="form-control" asp-items="ViewBag.AssocID"></select>
             </div>
             <div class="form-group">
                 <label asp-for="RayonID" class="control-label">Район</label>
-                <select asp-for="RayonID" class ="form-control" asp-items="ViewBag.RayonID"></select>
+                <select asp-for="RayonID" class="form-control" asp-items="ViewBag.RayonID"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Добавить" class="btn btn-primary" />

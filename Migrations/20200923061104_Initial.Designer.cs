@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KlopZavod.Migrations
 {
     [DbContext(typeof(ZavodContext))]
-    [Migration("20200918090105_creater")]
-    partial class creater
+    [Migration("20200923061104_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -72,6 +72,9 @@ namespace KlopZavod.Migrations
 
                     b.Property<int>("Ga")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");

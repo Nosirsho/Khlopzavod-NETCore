@@ -12,18 +12,18 @@
 <div class="row">
     @foreach (var item in Model)
     {
-    <div class="col-lg-4 border border-dark rounded-lg mx-3">
-        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-        <h2>Heading</h2>
-        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-
-
-
+    <div class="col-lg-4 border border-dark rounded-lg mx-3 text-center">
+        
+            <img class="rounded-circle" src="@("~/img/avatImg/"+item.ImageName)" asp-append-version="true" width="140" height="140" />
+        
+            <h2> @Html.DisplayFor(modelItem => item.Name)</h2>
+        <p>
+            <a asp-action="Edit" asp-route-id="@item.KhojagiID"><img src="~/img/edit.png" width="16" height="16"></a> |
+            <a asp-action="Details" asp-route-id="@item.KhojagiID"><img src="~/img/detail.png" width="16" height="16"></a> |
+            <a asp-action="Delete" asp-route-id="@item.KhojagiID"><img src="~/img/delete.png" width="16" height="16"></a>
+        </p>
 
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-                Наименование: @Html.DisplayFor(modelItem => item.Name)
-            </li>
             <li class="list-group-item">
                 Директор: @Html.DisplayFor(modelItem => item.Director)
             </li>
@@ -41,11 +41,6 @@
             </li>
             <li class="list-group-item">
                 Район: @Html.DisplayFor(modelItem => item.Rayon.Name)
-            </li>
-            <li>
-                <a asp-action="Edit" asp-route-id="@item.KhojagiID"><img src="~/img/edit.png" width="16" height="16"></a> |
-                <a asp-action="Details" asp-route-id="@item.KhojagiID"><img src="~/img/detail.png" width="16" height="16"></a> |
-                <a asp-action="Delete" asp-route-id="@item.KhojagiID"><img src="~/img/delete.png" width="16" height="16"></a>
             </li>
         </ul>
 
